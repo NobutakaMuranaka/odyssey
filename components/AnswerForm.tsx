@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const AnserForm = () => {
+const AnswerForm = () => {
   return (
     <div>
       <div className="py-16 max-w-5xl m-auto block">
@@ -33,4 +33,4 @@ const AnserForm = () => {
   );
 };
 
-export default AnserForm;
+export default AnswerForm;
