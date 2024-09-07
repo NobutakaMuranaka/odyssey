@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int       @id @default(autoincrement()) // ユーザーID (PK)
+  username   String
+  email      String    @unique
+  google_id  String?   @unique
+  avatar_url String?
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  answers    Answer[]  // 関連する回答
+}
+
+model Question {
+  id          Int       @id @default(autoincrement()) // 質問ID (PK)
+  question_text String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  answers     Answer[]  // 関連する回答
+}
+
+model Answer {
+  id          Int       @id @default(autoincrement()) // 回答ID (PK)
+  user        User      @relation(fields: [user_id], references: [id]) // ユーザーとのリレーション (FK)
+  user_id     Int
+  question    Question  @relation(fields: [question_id], references: [id]) // 質問とのリレーション (FK)
+  question_id Int
+  user_answer String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
