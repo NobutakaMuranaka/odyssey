@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
+import Login from "../components/Login";
+import Logout from "../components/Logout";
 import { useSession } from "next-auth/react";
 
 export default function Home() {
