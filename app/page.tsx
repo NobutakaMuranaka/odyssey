@@ -1,5 +1,12 @@
 import React from "react";
 
-export const page = () => {
-  return <div>page</div>;
+const HomePage = () => {
+  return (
+    <div>
+      <h1>Welcome to the Odyssey App!</h1>
+      <p>This is the homepage.</p>
+    </div>
+  );
 };
+
+export default HomePage;
