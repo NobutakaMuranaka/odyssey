@@ -6,7 +6,7 @@ export default function Logout() {
 
   if (status === "authenticated") {
     return (
-      <div>
+      <div className="flex items-center">
         <button onClick={() => signOut()}>ログアウト</button>
       </div>
     );
