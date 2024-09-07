@@ -1,10 +1,10 @@
-import AnserForm from "@/components/AnserForm";
+import AnswerForm from "@/components/AnswerForm";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <AnserForm />
+      <AnswerForm />
     </div>
   );
 };
