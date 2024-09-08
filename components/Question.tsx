@@ -19,6 +19,11 @@ const Question = ({
     router.push(`/answer/${id}`);
   };
 
+  const handleHistoryClick = () => {
+    // 回答するボタンがクリックされたら、/answer/[id] に遷移
+    router.push(`/history/${id}`);
+  };
+
   return (
     <div className="my-8">
       <Card>
@@ -29,7 +34,9 @@ const Question = ({
           <Button className="mr-4" onClick={handleAnswerClick}>
             回答する
           </Button>
-          <Button variant="outline">回答履歴を表示</Button>
+          <Button variant="outline" onClick={handleHistoryClick}>
+            回答履歴を表示
+          </Button>
         </div>
       </Card>
     </div>
