@@ -4,6 +4,7 @@ import Login from "./Login";
 import Logout from "../components/Logout";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -22,7 +23,7 @@ const Header = () => {
           {status === "authenticated" ? (
             <div className="flex gap-6">
               <Logout />
-              <img
+              <Image
                 src={session.user?.image ?? ``}
                 alt=""
                 style={{ borderRadius: "50px", width: "40px" }}
