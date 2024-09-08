@@ -13,7 +13,12 @@ const Header = () => {
       <div className="flex justify-between px-8 pt-4 items-center">
         <h1>
           <Link href="/">
-            <Image src="/Odyssey-logo.svg" alt="Odysseyロゴ" />
+            <Image
+              src="/Odyssey-logo.svg"
+              alt="Odysseyロゴ"
+              width={100}
+              height={40}
+            />
           </Link>
         </h1>
         <div className="flex gap-12 items-center">
@@ -26,7 +31,9 @@ const Header = () => {
               <Image
                 src={session.user?.image ?? ``}
                 alt="Googleアイコン"
-                style={{ borderRadius: "50px", width: "40px" }}
+                width={40}
+                height={40}
+                style={{ borderRadius: "50px" }}
               />
             </div>
           ) : (
