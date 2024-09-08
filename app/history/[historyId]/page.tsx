@@ -33,7 +33,6 @@ const Page = async ({ params }: { params: { historyId: string } }) => {
           (answer: { id: number; user_answer: string }) => (
             <Answer
               key={answer.id}
-              id={answer.id} // idを渡す
               user_answer={answer.user_answer}
             />
           )
