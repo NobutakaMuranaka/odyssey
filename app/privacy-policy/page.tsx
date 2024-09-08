@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const PrivacyPolicy = () => {
   return (
@@ -13,9 +13,7 @@ const PrivacyPolicy = () => {
         本アプリでは、ユーザーが入力した回答や履歴を保存するために個人情報を収集する場合があります。
       </p>
 
-      <h2 className="text-2xl font-semibold mt-4">
-        第2条（個人情報の利用目的）
-      </h2>
+      <h2 className="text-2xl font-semibold mt-4">第2条（個人情報の利用目的）</h2>
       <p>収集した個人情報は、以下の目的で利用します：</p>
       <ul className="list-disc list-inside">
         <li>ユーザーの学習履歴を保存し、サービスを提供するため</li>
@@ -23,9 +21,7 @@ const PrivacyPolicy = () => {
       </ul>
 
       <h2 className="text-2xl font-semibold mt-4">第3条（第三者提供）</h2>
-      <p>
-        収集した個人情報は、法令に基づく場合を除き、第三者に提供することはありません。
-      </p>
+      <p>収集した個人情報は、法令に基づく場合を除き、第三者に提供することはありません。</p>
     </div>
   );
 };

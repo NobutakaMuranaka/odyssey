@@ -1,32 +1,24 @@
-import { NextResponse } from "next/server";
-import prisma from "@/lib/prismaClient";
+import prisma from '@/lib/prismaClient';
+import { NextResponse } from 'next/server';
 
-export async function GET(
-  req: Request,
-  { params }: { params: { historyId: string } }
-) {
+export async function GET(req: Request, { params }: { params: { historyId: string } }) {
   const { historyId } = params;
 
   try {
     const questionWithAnswers = await prisma.question.findUnique({
-      where: { id: Number(historyId) }, // historyIdに該当する質問を取得
+      where: { id: Number(historyId) },
       include: {
-        answers: true, // 関連する回答を含める
+        answers: true,
       },
     });
 
     if (!questionWithAnswers) {
-      return NextResponse.json(
-        { message: "Question not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: 'Question not found' }, { status: 404 });
     }
 
     return NextResponse.json(questionWithAnswers);
   } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to fetch question and answers" },
-      { status: 500 }
-    );
+    console.error('Error fetching question and answers:', error);
+    return NextResponse.json({ error: 'Failed to fetch question and answers' }, { status: 500 });
   }
 }

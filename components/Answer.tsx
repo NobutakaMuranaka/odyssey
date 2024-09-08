@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import React from 'react';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 const Answer = ({ user_answer }: { user_answer: string }) => {
   return (

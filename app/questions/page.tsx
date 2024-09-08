@@ -1,13 +1,13 @@
-import Question from "@/components/Question";
-import React from "react";
+import Question from '@/components/Question';
+import React from 'react';
 
 // サーバー側でデータをフェッチする関数
 async function getQuestionAllData() {
-  const response = await fetch("http://localhost:3000/api/question/", {
-    cache: "no-store",
+  const response = await fetch('http://localhost:3000/api/question/', {
+    cache: 'no-store',
   });
   if (!response.ok) {
-    throw new Error("データの取得に失敗しました");
+    throw new Error('データの取得に失敗しました');
   }
   const questionAllData = await response.json();
   return questionAllData;
