@@ -13,7 +13,7 @@ const Header = () => {
       <div className="flex justify-between px-8 pt-4 items-center">
         <h1>
           <Link href="/">
-            <img src="/Odyssey-logo.svg" />
+            <Image src="/Odyssey-logo.svg" alt="Odysseyロゴ" />
           </Link>
         </h1>
         <div className="flex gap-12 items-center">
@@ -25,7 +25,7 @@ const Header = () => {
               <Logout />
               <Image
                 src={session.user?.image ?? ``}
-                alt=""
+                alt="Googleアイコン"
                 style={{ borderRadius: "50px", width: "40px" }}
               />
             </div>
