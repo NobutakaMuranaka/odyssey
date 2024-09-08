@@ -1,6 +1,7 @@
 import React from "react";
 import { useSession, signIn } from "next-auth/react";
 import { Button } from "./ui/button";
+import LoginButton from "./LoginButton";
 
 export default function Login() {
   const { status } = useSession();
@@ -12,9 +13,7 @@ export default function Login() {
   if (status !== "authenticated") {
     return (
       <div>
-        <Button onClick={() => signIn("google", {}, { prompt: "login" })}>
-          ログイン
-        </Button>
+        <LoginButton />
       </div>
     );
   }
