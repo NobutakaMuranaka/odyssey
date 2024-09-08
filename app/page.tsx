@@ -1,7 +1,7 @@
-import React from "react";
-import LoginButton from "@/components/LoginButton";
-import { Button } from "../components/ui/button";
-import Link from "next/link";
+import React from 'react';
+import LoginButton from '@/components/LoginButton';
+import { Button } from '../components/ui/button';
+import Link from 'next/link';
 
 export default async function Home() {
   return (

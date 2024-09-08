@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const TermsOfService = () => {
   return (
@@ -9,9 +9,7 @@ const TermsOfService = () => {
       </p>
 
       <h2 className="text-2xl font-semibold mt-4">第1条（適用）</h2>
-      <p>
-        本利用規約は、ユーザーと本アプリの運営者との間のすべての関係に適用されます。
-      </p>
+      <p>本利用規約は、ユーザーと本アプリの運営者との間のすべての関係に適用されます。</p>
 
       <h2 className="text-2xl font-semibold mt-4">第2条（禁止事項）</h2>
       <p>ユーザーは、以下の行為を行ってはなりません：</p>

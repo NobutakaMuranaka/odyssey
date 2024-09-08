@@ -1,17 +1,11 @@
-"use client"; // クライアントコンポーネントとしてマーク
+'use client'; // クライアントコンポーネントとしてマーク
 
-import React from "react";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation"; // useRouterをインポート
+import React from 'react';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation'; // useRouterをインポート
 
-const Question = ({
-  question_text,
-  id,
-}: {
-  question_text: string;
-  id: number;
-}) => {
+const Question = ({ question_text, id }: { question_text: string; id: number }) => {
   const router = useRouter();
 
   const handleAnswerClick = () => {

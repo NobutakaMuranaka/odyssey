@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import prisma from "../../../lib/prismaClient";
+import { NextResponse } from 'next/server';
+import prisma from '../../../lib/prismaClient';
 
 export async function GET() {
   const allQuestions = await prisma.question.findMany();

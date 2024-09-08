@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 const Footer = () => {
   return (
@@ -12,11 +12,7 @@ const Footer = () => {
           <Link href="/privacy-policy">プライバシーポリシー</Link>
         </li>
         <li>
-          <a
-            href="https://x.com/ayatakaa_chan"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://x.com/ayatakaa_chan" target="_blank" rel="noopener noreferrer">
             運営者情報
           </a>
         </li>
