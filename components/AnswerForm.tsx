@@ -10,16 +10,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const AnswerForm = () => {
+// propsにquestionTextを受け取るように変更
+const AnswerForm = ({ questionText }: { questionText: string }) => {
   return (
     <div>
       <div className="py-16 max-w-5xl m-auto block">
         <Card>
           <CardHeader>
-            <CardDescription>React</CardDescription>
-            <CardTitle>
-              Reduxはどのようにstateを管理しているか説明してください
-            </CardTitle>
+            <CardTitle>{questionText}</CardTitle>
           </CardHeader>
         </Card>
         <div className="mt-8">

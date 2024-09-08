@@ -15,18 +15,23 @@ const Header = () => {
             <img src="/Odyssey-logo.svg" />
           </Link>
         </h1>
-        {status === "authenticated" ? (
-          <div className="flex gap-6">
-            <Logout />
-            <img
-              src={session.user?.image ?? ``}
-              alt=""
-              style={{ borderRadius: "50px", width: "40px" }}
-            />
-          </div>
-        ) : (
-          <Login />
-        )}
+        <div className="flex gap-12 items-center">
+          <Link href="/questions">
+            <p>問題一覧</p>
+          </Link>
+          {status === "authenticated" ? (
+            <div className="flex gap-6">
+              <Logout />
+              <img
+                src={session.user?.image ?? ``}
+                alt=""
+                style={{ borderRadius: "50px", width: "40px" }}
+              />
+            </div>
+          ) : (
+            <Login />
+          )}
+        </div>
       </div>
     </header>
   );
