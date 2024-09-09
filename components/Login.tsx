@@ -8,12 +8,9 @@ export default function Login() {
     return <div>Loading...</div>;
   }
 
-  if (status !== 'authenticated') {
     return (
       <div>
         <LoginButton />
       </div>
     );
-  }
-  return null;
 }
