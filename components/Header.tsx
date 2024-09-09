@@ -1,13 +1,8 @@
-'use client';
-import React from 'react';
-import Login from './Login';
-import Logout from '../components/Logout';
-import { useSession } from 'next-auth/react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import HeaderLoginButton from './HeaderLoginButton';
 
 const Header = () => {
-  const { data: session, status } = useSession();
   return (
     <header>
       <div className="flex justify-between px-8 pt-4 items-center">
@@ -20,20 +15,7 @@ const Header = () => {
           <Link href="/questions">
             <p>問題一覧</p>
           </Link>
-          {status === 'authenticated' ? (
-            <div className="flex gap-6">
-              <Logout />
-              <Image
-                src={session.user?.image ?? ``}
-                alt="Googleアイコン"
-                width={40}
-                height={40}
-                style={{ borderRadius: '50px' }}
-              />
-            </div>
-          ) : (
-            <Login />
-          )}
+          <HeaderLoginButton />
         </div>
       </div>
     </header>

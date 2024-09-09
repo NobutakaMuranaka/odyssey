@@ -1,8 +1,14 @@
 'use client';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { Button } from './ui/button';
 
 const LoginButton = () => {
+  const { status } = useSession();
+
+  if (status === 'authenticated') {
+    return null;
+  }
+
   return (
     <div>
       <Button onClick={() => signIn('google', {}, { prompt: 'login' })}>ログイン</Button>
