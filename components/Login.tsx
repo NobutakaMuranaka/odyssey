@@ -8,9 +8,9 @@ export default function Login() {
     return <div>Loading...</div>;
   }
 
-    return (
-      <div>
-        <LoginButton />
-      </div>
-    );
+  return (
+    <div>
+      <LoginButton />
+    </div>
+  );
 }

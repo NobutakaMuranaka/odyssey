@@ -24,9 +24,7 @@ const HeaderLoginButton = () => {
 
   return (
     <div>
-      <Button onClick={() => signIn('google', {}, { prompt: 'login' })}>
-        ログイン
-      </Button>
+      <Button onClick={() => signIn('google', {}, { prompt: 'login' })}>ログイン</Button>
     </div>
   );
 };

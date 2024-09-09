@@ -3,7 +3,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { Button } from './ui/button';
 
 const LoginButton = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   if (status === 'authenticated') {
     return null;
