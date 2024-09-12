@@ -1,5 +1,4 @@
 import AnswerForm from '@/components/AnswerForm';
-import React from 'react';
 
 // APIから特定の質問データを取得する関数
 async function getQuestionData(answerId: string) {
@@ -16,7 +15,8 @@ const Page = async ({ params }: { params: { answerId: string } }) => {
 
   return (
     <div>
-      <AnswerForm questionText={questionData.question_text} />
+      {/* answerIdを渡す */}
+      <AnswerForm questionText={questionData.question_text} answerId={params.answerId} />
     </div>
   );
 };
