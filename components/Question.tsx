@@ -1,8 +1,7 @@
 'use client'; // クライアントコンポーネントとしてマーク
 
-import React from 'react';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { useRouter } from 'next/navigation'; // useRouterをインポート
 
 const Question = ({ question_text, id }: { question_text: string; id: number }) => {
@@ -20,11 +19,11 @@ const Question = ({ question_text, id }: { question_text: string; id: number }) 
 
   return (
     <div className="my-8">
-      <Card>
+      <Card className="justify-between flex">
         <CardHeader>
           <CardTitle>{question_text}</CardTitle>
         </CardHeader>
-        <div className="p-4 text-end">
+        <div className="p-4 text-end flex items-center">
           <Button className="mr-4" onClick={handleAnswerClick}>
             回答する
           </Button>
