@@ -2,10 +2,16 @@ import { NextResponse } from 'next/server';
 import prisma from '../../../lib/prismaClient';
 
 export async function GET() {
-  const allQuestions = await prisma.question.findMany({
-    orderBy: {
-      id: 'asc',
-    },
-  });
-  return NextResponse.json(allQuestions);
+  try {
+    const allQuestions = await prisma.question.findMany({
+      // orderBy: {
+      //   id: 'asc',
+      // },
+    });
+    console.log('Fetched questions:', allQuestions); // デバッグ用に出力
+    return NextResponse.json(allQuestions);
+  } catch (error) {
+    console.error('Error fetching questions:', error);
+    return NextResponse.json({ error: 'データの取得に失敗しました' }, { status: 500 });
+  }
 }
