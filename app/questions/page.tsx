@@ -1,5 +1,4 @@
 import Question from '@/components/Question';
-import React from 'react';
 
 // サーバー側でデータをフェッチする関数
 async function getQuestionAllData() {

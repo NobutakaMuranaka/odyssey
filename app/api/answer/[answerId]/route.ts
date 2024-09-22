@@ -1,17 +1,23 @@
 import { NextResponse } from 'next/server';
 import prisma from '../../../../lib/prismaClient';
 
-// 回答データを取得 (既存のGET)
+// 質問データを取得 (GET)
 export async function GET(request: Request, { params }: { params: { answerId: string } }) {
-  const answer = await prisma.answer.findMany({
+  // answerIdに対応する質問データを取得
+  const question = await prisma.question.findUnique({
     where: {
-      question_id: parseInt(params.answerId),
+      id: parseInt(params.answerId), // answerIdに一致するquestion_idを使用
     },
   });
-  return NextResponse.json(answer);
+
+  if (!question) {
+    return NextResponse.json({ error: 'Question not found' }, { status: 404 });
+  }
+
+  return NextResponse.json(question);
 }
 
-// 回答データを保存 (新規POST)
+// 回答データを保存 (POST)
 export async function POST(request: Request, { params }: { params: { answerId: string } }) {
   const { user_answer } = await request.json();
 
