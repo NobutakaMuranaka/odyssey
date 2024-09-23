@@ -1,58 +1,30 @@
-'use client'; // クライアントコンポーネントとして扱う
-
+import NavigateToTop from '@/components/NavigateToTop';
 import Question from '@/components/Question';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
-const Page = () => {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  const [questions, setQuestions] = useState([]);
+const Page = async () => {
+  const response = await fetch(`http://localhost:3000/api/question/`, {
+    cache: 'no-store',
+  });
 
-  useEffect(() => {
-    // ログインしていない場合はTOPページにリダイレクト
-    if (status === 'unauthenticated') {
-      router.push('/');
-    }
+  let questions = [];
 
-    // ログインしている場合はデータを取得
-    if (status === 'authenticated') {
-      const getQuestionAllData = async () => {
-        const response = await fetch('/api/question/', {
-          cache: 'no-store',
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setQuestions(data);
-        } else {
-          console.error('データの取得に失敗しました');
-        }
-      };
-      getQuestionAllData();
-    }
-  }, [status, router]);
-
-  // ログイン確認中はローディング状態を表示
-  if (status === 'loading') {
-    return <div>読み込み中...</div>;
+  if (response.ok) {
+    questions = await response.json();
+  } else {
+    console.error('データの取得に失敗しました');
   }
 
-  // 質問データがある場合は表示
   return (
     <div>
-      <div className="max-w-5xl m-auto block">
-        <h2 className="text-2xl mt-8">問題一覧</h2>
+      <NavigateToTop />
+      <div className="max-w-5xl m-auto block pb-10">
+        <h2 className="text-2xl mt-8 text-center">問題一覧</h2>
         {questions.length > 0 ? (
           questions.map((question: { id: number; question_text: string }) => (
-            <Question
-              key={question.id}
-              id={question.id} // idを渡す
-              question_text={question.question_text}
-            />
+            <Question key={question.id} id={question.id} question_text={question.question_text} />
           ))
         ) : (
-          <p>読み込み中...</p>
+          <p>問題が見つかりませんでした</p>
         )}
       </div>
     </div>

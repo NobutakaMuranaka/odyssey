@@ -1,19 +1,16 @@
-'use client'; // クライアントコンポーネントとしてマーク
-
+'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
-import { useRouter } from 'next/navigation'; // useRouterをインポート
+import { useRouter } from 'next/navigation';
 
 const Question = ({ question_text, id }: { question_text: string; id: number }) => {
   const router = useRouter();
 
   const handleAnswerClick = () => {
-    // 回答するボタンがクリックされたら、/answer/[id] に遷移
     router.push(`/answer/${id}`);
   };
 
   const handleHistoryClick = () => {
-    // 回答するボタンがクリックされたら、/answer/[id] に遷移
     router.push(`/history/${id}`);
   };
 
