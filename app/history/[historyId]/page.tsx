@@ -1,5 +1,10 @@
+'use client'; // クライアントコンポーネントとして扱う
+
 import Answer from '@/components/Answer';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 // APIから特定の質問データを取得する関数
 async function getHistoryData(historyId: string) {
@@ -16,8 +21,44 @@ async function getHistoryData(historyId: string) {
   return historyData;
 }
 
-const Page = async ({ params }: { params: { historyId: string } }) => {
-  const historyData = await getHistoryData(params.historyId);
+const Page = ({ params }: { params: { historyId: string } }) => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [historyData, setHistoryData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // ログインしていない場合はTOPページにリダイレクト
+    if (status === 'unauthenticated') {
+      router.push('/');
+    }
+
+    // ログインしている場合はデータを取得
+    if (status === 'authenticated') {
+      const fetchData = async () => {
+        try {
+          const data = await getHistoryData(params.historyId);
+          setHistoryData(data);
+        } catch (err) {
+          setError('データの取得に失敗しました');
+        }
+      };
+
+      fetchData();
+    }
+  }, [status, router, params.historyId]);
+
+  if (status === 'loading') {
+    return <div>読み込み中...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!historyData) {
+    return <div>データを読み込み中...</div>;
+  }
 
   return (
     <div className="py-16 max-w-5xl m-auto block">
