@@ -1,5 +1,5 @@
 import LoginButton from '@/components/LoginButton';
-import NavigateToQuestions from '@/components/NavigateToQuestions';
+import NavigateToQuestions from '@/components/hooks/NavigateToQuestions';
 import Image from 'next/image';
 
 export default function Home() {

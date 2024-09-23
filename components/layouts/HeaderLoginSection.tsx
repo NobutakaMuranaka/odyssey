@@ -2,7 +2,7 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 
 const HeaderLoginButton = () => {
   const { data: session, status } = useSession();

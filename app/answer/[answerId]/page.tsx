@@ -1,6 +1,6 @@
 'use server';
 import AnswerForm from '@/components/AnswerForm';
-import NavigateToTop from '@/components/NavigateToTop';
+import NavigateToTop from '@/components/hooks/NavigateToTop';
 
 async function getQuestionData(answerId: string) {
   const response = await fetch(`${process.env.NEXTAUTH_URL}/api/question/${answerId}`, {
