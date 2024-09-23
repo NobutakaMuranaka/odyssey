@@ -1,9 +1,11 @@
+import LoginButton from '@/components/LoginButton';
+import NavigateToQuestions from '@/components/NavigateToQuestions';
 import Image from 'next/image';
-import LoginSection from '../components/LoginSection';
 
 export default function Home() {
   return (
     <div>
+      <NavigateToQuestions />
       <div className="h-full">
         <div className="text-center mt-4 py-28">
           <h1 className="text-5xl">
@@ -12,7 +14,7 @@ export default function Home() {
             Odyssey
           </h1>
           <p className="text-2xl mt-4">答えのない、思考の旅に出よう。</p>
-          <LoginSection />
+          <LoginButton />
         </div>
         <div className="flex">
           <div className="m-auto flex gap-5">
@@ -50,7 +52,7 @@ export default function Home() {
         <div className="text-center py-28">
           <h2 className="text-3xl mb-5">答えのない、思考の旅に出よう。</h2>
           <p>Googleアカウントで簡単ログイン</p>
-          <LoginSection />
+          <LoginButton />
         </div>
       </div>
     </div>
