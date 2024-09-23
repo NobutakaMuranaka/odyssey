@@ -1,27 +1,7 @@
-'use client'; // この行を追加して、Client Componentとしてマーク
-
-import LoginButton from '@/components/LoginButton';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'; // next/router ではなく next/navigation を使用
-import { useEffect } from 'react';
+import LoginSection from '../components/LoginSection';
 
 export default function Home() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    // ログイン済みの場合、問題一覧ページにリダイレクト
-    if (status === 'authenticated') {
-      router.push('/questions');
-    }
-  }, [status, router]);
-
-  // ログイン確認中はローディング状態を表示
-  if (status === 'loading') {
-    return <div>読み込み中...</div>;
-  }
-
   return (
     <div>
       <div className="h-full">
@@ -32,9 +12,7 @@ export default function Home() {
             Odyssey
           </h1>
           <p className="text-2xl mt-4">答えのない、思考の旅に出よう。</p>
-          <div className="mt-8 mb-4">
-            <LoginButton />
-          </div>
+          <LoginSection />
         </div>
         <div className="flex">
           <div className="m-auto flex gap-5">
@@ -72,9 +50,7 @@ export default function Home() {
         <div className="text-center py-28">
           <h2 className="text-3xl mb-5">答えのない、思考の旅に出よう。</h2>
           <p>Googleアカウントで簡単ログイン</p>
-          <div className="mt-8 mb-4">
-            <LoginButton />
-          </div>
+          <LoginSection />
         </div>
       </div>
     </div>
