@@ -26,8 +26,8 @@ export default function Home() {
               style={{ width: 'auto', height: 'auto' }}
             />
             <Image
-              src="/Nextjs_logo.svg"
-              alt="Nextjsロゴ"
+              src="/NextJs_logo.svg"
+              alt="NextJsロゴ"
               width={100}
               height={40}
               style={{ width: 'auto', height: 'auto' }}
