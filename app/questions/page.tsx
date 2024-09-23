@@ -1,5 +1,5 @@
 'use server';
-import NavigateToTop from '@/components/NavigateToTop';
+import NavigateToTop from '@/components/hooks/NavigateToTop';
 import Question from '@/components/Question';
 
 const Page = async () => {

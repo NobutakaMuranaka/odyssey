@@ -1,6 +1,6 @@
 'use server';
 import Answer from '@/components/Answer';
-import NavigateToTop from '@/components/NavigateToTop';
+import NavigateToTop from '@/components/hooks/NavigateToTop';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
 async function getHistoryData(historyId: string) {
