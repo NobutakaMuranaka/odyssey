@@ -1,8 +1,13 @@
+'use client'; // クライアントコンポーネントとして扱う
+
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderLoginButton from './HeaderLoginButton';
 
 const Header = () => {
+  const { data: session, status } = useSession();
+
   return (
     <header>
       <div className="flex justify-between px-8 pt-4 items-center">
@@ -18,9 +23,12 @@ const Header = () => {
           </Link>
         </h1>
         <div className="flex gap-12 items-center">
-          <Link href="/questions">
-            <p>問題一覧</p>
-          </Link>
+          {/* ログイン済みの場合にのみ「問題一覧」リンクを表示 */}
+          {status === 'authenticated' && (
+            <Link href="/questions">
+              <p>問題一覧</p>
+            </Link>
+          )}
           <HeaderLoginButton />
         </div>
       </div>

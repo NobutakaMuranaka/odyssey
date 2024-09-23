@@ -1,20 +1,44 @@
+'use client'; // クライアントコンポーネントとして扱う
+
 import Question from '@/components/Question';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-// サーバー側でデータをフェッチする関数
-async function getQuestionAllData() {
-  const response = await fetch('http://localhost:3000/api/question/', {
-    cache: 'no-store',
-  });
-  if (!response.ok) {
-    throw new Error('データの取得に失敗しました');
+const Page = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    // ログインしていない場合はTOPページにリダイレクト
+    if (status === 'unauthenticated') {
+      router.push('/');
+    }
+
+    // ログインしている場合はデータを取得
+    if (status === 'authenticated') {
+      const getQuestionAllData = async () => {
+        const response = await fetch('/api/question/', {
+          cache: 'no-store',
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setQuestions(data);
+        } else {
+          console.error('データの取得に失敗しました');
+        }
+      };
+      getQuestionAllData();
+    }
+  }, [status, router]);
+
+  // ログイン確認中はローディング状態を表示
+  if (status === 'loading') {
+    return <div>読み込み中...</div>;
   }
-  const questionAllData = await response.json();
-  return questionAllData;
-}
 
-const Page = async () => {
-  const questions = await getQuestionAllData();
-
+  // 質問データがある場合は表示
   return (
     <div>
       <div className="max-w-5xl m-auto block">
