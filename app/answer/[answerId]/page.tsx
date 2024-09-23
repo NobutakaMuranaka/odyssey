@@ -1,61 +1,29 @@
-'use client'; // クライアントコンポーネントとして扱う
-
 import AnswerForm from '@/components/AnswerForm';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import NavigateToTop from '@/components/NavigateToTop';
 
-// APIから特定の質問データを取得する関数
 async function getQuestionData(answerId: string) {
-  const response = await fetch(`http://localhost:3000/api/question/${answerId}`);
+  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/question/${answerId}`, {
+    cache: 'no-store',
+  });
+
   if (!response.ok) {
     throw new Error('Failed to fetch question data');
   }
-  const questionData = await response.json();
-  return questionData;
+  return response.json();
 }
 
-const Page = ({ params }: { params: { answerId: string } }) => {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  const [questionData, setQuestionData] = useState(null);
-  const [error, setError] = useState(null);
+const Page = async ({ params }: { params: { answerId: string } }) => {
+  let questionData;
 
-  useEffect(() => {
-    // ログインしていない場合はトップページにリダイレクト
-    if (status === 'unauthenticated') {
-      router.push('/');
-    }
-
-    // ログインしている場合はデータを取得
-    if (status === 'authenticated') {
-      const fetchData = async () => {
-        try {
-          const data = await getQuestionData(params.answerId);
-          setQuestionData(data);
-        } catch (err) {
-          setError('データの取得に失敗しました');
-        }
-      };
-
-      fetchData();
-    }
-  }, [status, router, params.answerId]);
-
-  if (status === 'loading') {
-    return <div>読み込み中...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (!questionData) {
-    return <div>データを読み込み中...</div>;
+  try {
+    questionData = await getQuestionData(params.answerId);
+  } catch (error) {
+    return <p>データの取得に失敗しました: {error.message}</p>;
   }
 
   return (
     <div>
+      <NavigateToTop />
       <AnswerForm questionText={questionData.question_text} answerId={params.answerId} />
     </div>
   );

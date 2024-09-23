@@ -2,7 +2,7 @@ import NavigateToTop from '@/components/NavigateToTop';
 import Question from '@/components/Question';
 
 const Page = async () => {
-  const response = await fetch(`http://localhost:3000/api/question/`, {
+  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/question/`, {
     cache: 'no-store',
   });
 

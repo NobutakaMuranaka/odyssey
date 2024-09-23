@@ -1,14 +1,11 @@
-"use client"
+'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 
 const AnswerForm = ({ questionText, answerId }: { questionText: string; answerId: string }) => {
-  // 回答の状態を管理する
   const [userAnswer, setUserAnswer] = useState('');
-
-  // 回答を保存する関数
   const handleSaveAnswer = async () => {
     try {
       const response = await fetch(`/api/answer/${answerId}`, {
