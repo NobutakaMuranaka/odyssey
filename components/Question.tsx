@@ -21,7 +21,7 @@ const Question = ({ question_text, id }: { question_text: string; id: number }) 
     <div className="my-8">
       <Card className="justify-between flex">
         <CardHeader>
-          <CardTitle>{question_text}</CardTitle>
+          <CardTitle className="text-lg">{question_text}</CardTitle>
         </CardHeader>
         <div className="p-4 text-end flex items-center">
           <Button className="mr-4" onClick={handleAnswerClick}>
