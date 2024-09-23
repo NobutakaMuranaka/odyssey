@@ -1,3 +1,4 @@
+'use server';
 import NavigateToTop from '@/components/NavigateToTop';
 import Question from '@/components/Question';
 

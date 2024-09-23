@@ -1,3 +1,4 @@
+'use server';
 import AnswerForm from '@/components/AnswerForm';
 import NavigateToTop from '@/components/NavigateToTop';
 
